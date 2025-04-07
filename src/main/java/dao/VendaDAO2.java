@@ -1,7 +1,6 @@
 package dao;
 
-import dao.generic.GenericDAO;
-import dao.generic.GenericPostgree1;
+import dao.generic.GenericPostgree2;
 import domain.Cliente;
 import domain.Produto;
 import domain.Venda;
@@ -12,9 +11,9 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
-public class VendaDAO extends GenericPostgree1<Venda, Long> implements IVendaDAO {
+public class VendaDAO2 extends GenericPostgree2<Venda, Long> implements IVendaDAO {
 
-    public VendaDAO() {
+    public VendaDAO2() {
         super(Venda.class);
     }
 

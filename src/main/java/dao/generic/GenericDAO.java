@@ -19,8 +19,13 @@ public class GenericDAO<T extends Persistente, E extends Serializable> implement
 
     private Class<T> persistenteClass;
 
-    public GenericDAO(Class<T> persistenteClass) {
+    private static final String PERSISTENCE_UNIT_NAME = "Postgre1";
+
+    private String persistenceUnitName;
+
+    public GenericDAO(Class<T> persistenteClass, String persistenceUnitName) {
         this.persistenteClass = persistenteClass;
+        this.persistenceUnitName = persistenceUnitName;
     }
 
     @Override
@@ -70,9 +75,17 @@ public class GenericDAO<T extends Persistente, E extends Serializable> implement
 
     protected void openConnection() {
         entityManagerFactory =
-                Persistence.createEntityManagerFactory("ExemploJPA");
+                Persistence.createEntityManagerFactory(getPersistenceUnitName());
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
+    }
+
+    private String getPersistenceUnitName() {
+        if (persistenceUnitName != null && !"".equals(persistenceUnitName)) {
+            return persistenceUnitName;
+        } else {
+            return PERSISTENCE_UNIT_NAME;
+        }
     }
 
     protected void closeConnection() {

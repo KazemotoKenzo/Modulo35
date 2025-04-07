@@ -1,13 +1,13 @@
 package dao;
 
-import dao.generic.GenericPostgree1;
+import dao.generic.GenericPostgree2;
 import domain.Venda;
 import exceptions.DAOException;
 import exceptions.TipoChaveNaoEncontradaException;
 
-public class VendaExclusaoDAO extends GenericPostgree1<Venda, Long> implements IVendaDAO {
+public class VendaExclusaoDAO2  extends GenericPostgree2<Venda, Long> implements IVendaDAO {
 
-    public VendaExclusaoDAO() {
+    public VendaExclusaoDAO2() {
         super(Venda.class);
     }
 
@@ -26,3 +26,4 @@ public class VendaExclusaoDAO extends GenericPostgree1<Venda, Long> implements I
         throw new UnsupportedOperationException("OPERAÇÃO NÃO PERMITIDA");
     }
 }
+
